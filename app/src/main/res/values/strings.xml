@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Ravens Box</string>
+    <string name="signup">Register</string>
+    <string name="login">Login</string>
+    <string name="message_welcome_page">Lets sign your account and join us to find more excited contents!</string>
+    <string name="title_welcome_page">Welcome to RavensBox Story App!</string>
+    <string name="title_signup_page">Fill your data please</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Fill your data</string>
+    <string name="title_login_page">Are you ready to find out excited contents</string>
+    <string name="name">Nama</string>
+    <string name="message_main_page">Welcome to RavenBoxes.</string>
+    <string name="greeting">Hello %1$s,</string>
+    <string name="logout">Logout</string>
+    <string name="email_notif">Email its not match</string>
+    <string name="password_notif">Password its not match</string>
+    <string name="description">Description</string>
+    <string name="maker">Username</string>
+    <string name="enter_description">Input Description</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload</string>
+    <string name="empty_image_warning">Warninggg\n</string>
+    <string name="alert_invalid_email">Email Invalid</string>
+    <string name="add_post_description">Add Post Description\n</string>
+    <string name="errorEmail">Please put email correctly</string>
+    <string name="errorPass">\nPassword must be at least 8 characters long</string>
+    <string name="detailimage">Detail Image</string>
+    <string name="minimum">Nama Minimal Memiliki 3 huruf</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>
