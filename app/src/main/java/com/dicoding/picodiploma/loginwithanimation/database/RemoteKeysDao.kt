@@ -1,4 +1,4 @@
-package com.project.storyappproject.data.datapaging.database
+package com.dicoding.picodiploma.loginwithanimation.database
 
 import androidx.room.Dao
 import androidx.room.Insert

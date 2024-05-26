@@ -1,10 +1,10 @@
-package com.project.storyappproject.data.datapaging.database
+package com.dicoding.picodiploma.loginwithanimation.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dicoding.picodiploma.loginwithanimation.online.model.ListStoryItem
+import com.dicoding.picodiploma.loginwithanimation.response.ListStoryItem
 
 @Database(
     entities =[ListStoryItem::class, RemoteKeys::class],

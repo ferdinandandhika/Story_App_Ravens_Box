@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.online.model
+package com.dicoding.picodiploma.loginwithanimation.response
 
 import android.os.Parcelable
 import androidx.room.Entity
@@ -8,13 +8,13 @@ import kotlinx.parcelize.Parcelize
 
 data class StoryResponse(
 
-	@field:SerializedName("listStory")
+    @field:SerializedName("listStory")
 	val listStory: List<ListStoryItem>,
 
-	@field:SerializedName("error")
+    @field:SerializedName("error")
 	val error: Boolean,
 
-	@field:SerializedName("message")
+    @field:SerializedName("message")
 	val message: String
 )
 

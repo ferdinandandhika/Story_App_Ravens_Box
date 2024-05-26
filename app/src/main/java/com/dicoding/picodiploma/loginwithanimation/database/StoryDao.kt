@@ -1,11 +1,11 @@
-package com.project.storyappproject.data.datapaging.database
+package com.dicoding.picodiploma.loginwithanimation.database
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.dicoding.picodiploma.loginwithanimation.online.model.ListStoryItem
+import com.dicoding.picodiploma.loginwithanimation.response.ListStoryItem
 
 @Dao
 interface StoryDao {

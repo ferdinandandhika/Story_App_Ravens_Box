@@ -14,14 +14,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.dicoding.picodiploma.loginwithanimation.api.ApiConfig
 import com.dicoding.picodiploma.loginwithanimation.R
-import com.dicoding.picodiploma.loginwithanimation.online.model.PostStoryResponse
-import com.dicoding.picodiploma.loginwithanimation.datapaging.StoryRepository
+import com.dicoding.picodiploma.loginwithanimation.response.PostStoryResponse
+import com.dicoding.picodiploma.loginwithanimation.data.StoryRepository
 import com.dicoding.picodiploma.loginwithanimation.pref.UserPreference
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityPostBinding
 import com.dicoding.picodiploma.loginwithanimation.view.main.MainActivity
 import com.google.gson.Gson
+import com.dicoding.picodiploma.loginwithanimation.database.StoryDatabase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -63,60 +65,66 @@ class PostActivity : AppCompatActivity() {
 
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.cameraButton.setOnClickListener { startCamera() }
-//        binding.uploadButton.setOnClickListener { uploadImage() }
+        binding.uploadButton.setOnClickListener { uploadImage() }
 
         binding.back1.setOnClickListener { finish() }
 
     }
 
 
-//    private fun uploadImage() {
-//        currentImageUri?.let { uri ->
-//            val imageFile = uriToFile(uri, this).reduceFileImage()
-//            Log.d("Image File", "showImage: ${imageFile.path}")
-//            val description = binding.descriptionEditText.text.toString()
-//
-//            showLoading(true)
-//
-//            val repository = StoryRepository.getInstance(
-//                UserPreference(context = this),
-//                ApiConfig().getApiService()
-//            )
-//
-//            val token = UserPreference(this).getUser().token
-//
-//            repository.uploadImage(imageFile, description, token).enqueue(object : Callback<PostStoryResponse> {
-//                override fun onResponse(call: Call<PostStoryResponse>, response: Response<PostStoryResponse>) {
-//                    if (response.isSuccessful) {
-//                        val successResponse = response.body()
-//                        showToast(successResponse?.message ?: "Image uploaded successfully")
-//                        goToMain()
-//                    } else {
-//                        val errorBody = response.errorBody()?.string()
-//                        val errorResponse = Gson().fromJson(errorBody, PostStoryResponse::class.java)
-//                        showToast(errorResponse.message ?: "Failed to upload image")
-//                    }
-//                    showLoading(false)
-//                }
-//
-//                override fun onFailure(call: Call<PostStoryResponse>, t: Throwable) {
-//                    showToast("Failed to upload image: ${t.message}")
-//                    showLoading(false)
-//                }
-//            })
-//
-//
-//            viewModel.isLoading.observe(this) { isLoading ->
-//                binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-//            }
-//
-//            viewModel.isError.observe(this) { errorMessage ->
-//                if (errorMessage.isNotEmpty()) {
-//                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        } ?: showToast(getString(R.string.empty_image_warning))
-//    }
+    private fun uploadImage() {
+        currentImageUri?.let { uri ->
+            val imageFile = uriToFile(uri, this).reduceFileImage()
+            Log.d("Image File", "showImage: ${imageFile.path}")
+            val description = binding.descriptionEditText.text.toString()
+
+            showLoading(true)
+
+            val storyDatabase = Room.databaseBuilder(
+                applicationContext,
+                StoryDatabase::class.java, "story_database"
+            ).build()
+
+            val repository = StoryRepository.getInstance(
+                context = this,
+                userPreference = UserPreference(context = this),
+                apiService = ApiConfig().getApiService(),
+                storyDatabase = storyDatabase
+            )
+
+            val token = UserPreference(this).getUser().token
+
+            repository.uploadImage(imageFile, description, token).enqueue(object : Callback<PostStoryResponse> {
+                override fun onResponse(call: Call<PostStoryResponse>, response: Response<PostStoryResponse>) {
+                    if (response.isSuccessful) {
+                        val successResponse = response.body()
+                        showToast(successResponse?.message ?: "Image uploaded successfully")
+                        goToMain()
+                    } else {
+                        val errorBody = response.errorBody()?.string()
+                        val errorResponse = Gson().fromJson(errorBody, PostStoryResponse::class.java)
+                        showToast(errorResponse.message)
+                    }
+                    showLoading(false)
+                }
+
+                override fun onFailure(call: Call<PostStoryResponse>, t: Throwable) {
+                    showToast("Failed to upload image: ${t.message}")
+                    showLoading(false)
+                }
+            })
+
+            viewModel.isLoading.observe(this) { isLoading ->
+                binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            }
+
+            viewModel.isError.observe(this) { errorMessage ->
+                if (errorMessage.isNotEmpty()) {
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        } ?: showToast(getString(R.string.empty_image_warning))
+    }
 
     private fun goToMain() {
         lifecycleScope.launch {

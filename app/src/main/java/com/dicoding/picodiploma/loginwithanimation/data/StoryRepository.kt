@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.datapaging
+package com.dicoding.picodiploma.loginwithanimation.data
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -8,13 +8,12 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.dicoding.picodiploma.loginwithanimation.api.ApiService
-import com.dicoding.picodiploma.loginwithanimation.online.model.ListStoryItem
-import com.dicoding.picodiploma.loginwithanimation.online.model.PostStoryResponse
-import com.dicoding.picodiploma.loginwithanimation.online.model.StoryResponse
+import com.dicoding.picodiploma.loginwithanimation.response.ListStoryItem
+import com.dicoding.picodiploma.loginwithanimation.response.PostStoryResponse
+import com.dicoding.picodiploma.loginwithanimation.response.StoryResponse
 import com.dicoding.picodiploma.loginwithanimation.pref.UserModel
 import com.dicoding.picodiploma.loginwithanimation.pref.UserPreference
-import com.project.storyappproject.data.datapaging.StoryRemoteMediator
-import com.project.storyappproject.data.datapaging.database.StoryDatabase
+import com.dicoding.picodiploma.loginwithanimation.database.StoryDatabase
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -32,13 +31,6 @@ class StoryRepository(
     fun getSession(): UserModel {
         return userPreference.getUser()
     }
-
-    fun getStories(token: String?): Call<StoryResponse> {
-        return apiService.getStories("Bearer $token")
-    }
-
-//
-//    }
 
     fun uploadImage(file: File, description: String, token: String?): Call<PostStoryResponse> {
         val descriptionBody = description.toRequestBody("text/plain".toMediaType())
@@ -61,13 +53,13 @@ class StoryRepository(
         ).liveData
     }
 
-//    companion object {
-//        @Volatile
-//        private var instance: StoryRepository? = null
-//
-//        fun getInstance(userPreference: UserPreference, apiService: ApiService) =
-//            instance ?: synchronized(this) {
-//                instance ?: StoryRepository(userPreference, apiService).also { instance = it }
-//            }
-//    }
+    companion object {
+        @Volatile
+        private var instance: StoryRepository? = null
+
+        fun getInstance(context: Context,  userPreference: UserPreference, apiService: ApiService, storyDatabase: StoryDatabase) =
+            instance ?: synchronized(this) {
+                instance ?: StoryRepository(context, userPreference, apiService, storyDatabase).also { instance = it }
+            }
+    }
 }

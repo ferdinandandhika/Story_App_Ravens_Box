@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.dicoding.picodiploma.loginwithanimation.datapaging.StoryRepository
+import com.dicoding.picodiploma.loginwithanimation.data.StoryRepository
 import com.dicoding.picodiploma.loginwithanimation.adapter.ResultState
 import kotlinx.coroutines.Dispatchers
 import java.io.File

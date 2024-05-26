@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.loginwithanimation.R
-import com.dicoding.picodiploma.loginwithanimation.online.model.LoginResponse
+import com.dicoding.picodiploma.loginwithanimation.response.LoginResponse
 import com.dicoding.picodiploma.loginwithanimation.pref.UserModel
 import com.dicoding.picodiploma.loginwithanimation.pref.UserPreference
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityLoginBinding

@@ -1,4 +1,4 @@
-package com.project.storyappproject.data.datapaging.database
+package com.dicoding.picodiploma.loginwithanimation.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

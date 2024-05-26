@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.loginwithanimation.data.Injection
-import com.dicoding.picodiploma.loginwithanimation.datapaging.StoryRepository
+import com.dicoding.picodiploma.loginwithanimation.data.StoryRepository
 import com.dicoding.picodiploma.loginwithanimation.view.main.MainViewModel
 
 class ViewModelFactory(private val repository: StoryRepository) :

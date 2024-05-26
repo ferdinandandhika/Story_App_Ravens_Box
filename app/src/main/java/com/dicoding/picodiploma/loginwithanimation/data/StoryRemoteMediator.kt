@@ -1,4 +1,4 @@
-package com.project.storyappproject.data.datapaging
+package com.dicoding.picodiploma.loginwithanimation.data
 
 import android.content.Context
 import androidx.paging.ExperimentalPagingApi
@@ -7,11 +7,11 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.dicoding.picodiploma.loginwithanimation.api.ApiService
-import com.dicoding.picodiploma.loginwithanimation.online.model.ListStoryItem
+import com.dicoding.picodiploma.loginwithanimation.response.ListStoryItem
 import com.dicoding.picodiploma.loginwithanimation.pref.UserPreference
 
-import com.project.storyappproject.data.datapaging.database.RemoteKeys
-import com.project.storyappproject.data.datapaging.database.StoryDatabase
+import com.dicoding.picodiploma.loginwithanimation.database.RemoteKeys
+import com.dicoding.picodiploma.loginwithanimation.database.StoryDatabase
 
 
 @OptIn(ExperimentalPagingApi::class)

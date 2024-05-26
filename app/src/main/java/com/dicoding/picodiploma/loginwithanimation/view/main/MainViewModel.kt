@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.dicoding.picodiploma.loginwithanimation.online.model.ListStoryItem
-import com.dicoding.picodiploma.loginwithanimation.datapaging.StoryRepository
+import com.dicoding.picodiploma.loginwithanimation.response.ListStoryItem
+import com.dicoding.picodiploma.loginwithanimation.data.StoryRepository
 
 
 class MainViewModel(private val repository: StoryRepository) : ViewModel() {

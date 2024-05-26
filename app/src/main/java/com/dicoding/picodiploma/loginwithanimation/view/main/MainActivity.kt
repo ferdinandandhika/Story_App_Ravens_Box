@@ -3,39 +3,28 @@ package com.dicoding.picodiploma.loginwithanimation.view.main
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.picodiploma.loginwithanimation.MapsActivity
-import com.dicoding.picodiploma.loginwithanimation.R
+import com.dicoding.picodiploma.loginwithanimation.view.maps.MapsActivity
 import com.dicoding.picodiploma.loginwithanimation.adapter.StoryAdapter
-import com.dicoding.picodiploma.loginwithanimation.api.ApiConfig
 import com.dicoding.picodiploma.loginwithanimation.data.Injection
-import com.dicoding.picodiploma.loginwithanimation.online.model.StoryResponse
-import com.dicoding.picodiploma.loginwithanimation.datapaging.StoryRepository
 import com.dicoding.picodiploma.loginwithanimation.pref.UserPreference
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityMainBinding
 import com.dicoding.picodiploma.loginwithanimation.view.post.PostActivity
 import com.dicoding.picodiploma.loginwithanimation.view.post.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.view.welcome.WelcomeActivity
-import com.project.storyappproject.data.datapaging.database.StoryDatabase
 import com.scwang.smart.refresh.footer.BallPulseFooter
 import com.scwang.smart.refresh.header.MaterialHeader
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.awaitResponse
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels { ViewModelFactory(Injection.provideRepository(this)) }
     private lateinit var storyAdapter: StoryAdapter
-//
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

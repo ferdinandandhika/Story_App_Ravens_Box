@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.picodiploma.loginwithanimation.api.ApiConfig
-import com.dicoding.picodiploma.loginwithanimation.online.model.LoginResponse
+import com.dicoding.picodiploma.loginwithanimation.response.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

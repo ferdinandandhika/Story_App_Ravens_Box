@@ -1,9 +1,9 @@
 package com.dicoding.picodiploma.loginwithanimation.api
 
-import com.dicoding.picodiploma.loginwithanimation.online.model.LoginResponse
-import com.dicoding.picodiploma.loginwithanimation.online.model.PostStoryResponse
-import com.dicoding.picodiploma.loginwithanimation.online.model.RegisterResponse
-import com.dicoding.picodiploma.loginwithanimation.online.model.StoryResponse
+import com.dicoding.picodiploma.loginwithanimation.response.LoginResponse
+import com.dicoding.picodiploma.loginwithanimation.response.PostStoryResponse
+import com.dicoding.picodiploma.loginwithanimation.response.RegisterResponse
+import com.dicoding.picodiploma.loginwithanimation.response.StoryResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -47,9 +47,10 @@ interface ApiService {
 
 
     @GET("stories")
-    suspend fun getStoriesWithLocation(
-        @Query("location") location : Int = 1,
-    ): StoryResponse
+    fun getStoriesWithLocation(
+        @Header("Authorization") token: String,
+        @Query("location") location : Int = 1
+    ):Call<StoryResponse>
 
     @GET("stories")
     suspend fun getAllPage(
