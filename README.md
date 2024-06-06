@@ -1,2 +1,1 @@
-Ravens Box redefines the story-sharing experience, similar to Instagram, with seamless functionality. Users can register and log in through the Dicoding API, browse a dynamic feed of stories using Paging 3 for fluid navigation, and post their own stories with both text and images. 
-The app enhances engagement by integrating maps to visualize the locations of shared stories, creating a more connected and immersive experience. Extensive testing guarantees both reliability and performance, positioning Ravens Box as a premier platform for interactive and community-driven storytelling
+https://www.canva.com/design/DAF_3lNqYRs/7jrJ2qHYL4TTMludvd8Qww/view?utm_content=DAF_3lNqYRs&utm_campaign=designshare&utm_medium=link&utm_source=editor
